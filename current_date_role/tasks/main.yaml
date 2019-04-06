@@ -1,0 +1,9 @@
+---
+- set_fact: mydate="{{lookup('pipe','date +%d/%m/%y')}}"
+- debug: var=mydate
+- name:  template for system info
+  template:
+    src: result.j2
+    dest: /etc/ansible/roles/new_role/result.csv
+    force: yes
+  delegate_to: localhost
