@@ -1,0 +1,15 @@
+---
+- name: save powershell Script actions
+  file:
+    path: "/var/log/powershellscript_{{ inventory_hostname }}"
+    state: touch
+  delegate_to: localhost
+- debug:
+    msg: "{{info}}"
+- local_action: lineinfile line="{{ info.cmd }}" dest=/var/log/powershellscript_{{ inventory_hostname }}
+- name: fetch output file to local machine
+  fetch:
+    src: C:\logfile.csv
+    dest: /root/ansible/logfile_{{ ansible_env.COMPUTERNAME }}
+    flat: yes
+

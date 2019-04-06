@@ -1,0 +1,22 @@
+---
+- hosts: windows1
+  connection: local
+  gather_facts: yes
+  any_errors_fatal: true
+  vars_prompt:
+    - name: log_name
+      prompt: enter log_name
+      private: no
+    - name: After_Date
+      prompt: enter After Date(mm/dd/yy)
+      private: no
+    - name: Before_Date
+      prompt: enter Before Date(mm/dd/yy)
+      private: no
+    - name: entry_type
+      prompt: enter entry_type
+      private: no
+
+
+  roles:
+  - new

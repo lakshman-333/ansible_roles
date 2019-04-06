@@ -1,0 +1,6 @@
+---
+ - name: script
+   win_shell: |
+     Get-EventLog  -LogName "{{name1}}" -After "{{Adate}}" -Before "{{Bdate}}" -EntryType "{{type}}" | Export-CSV -Path C:\logfile.csv -NoTypeInformation -Append
+   register: info
+

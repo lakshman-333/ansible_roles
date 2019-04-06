@@ -1,0 +1,6 @@
+---
+# tasks file for new
+- include: input.yml
+- include: validate.yml
+- include: powershell.yml  
+- include: save_logfile.yml

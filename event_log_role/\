@@ -1,0 +1,8 @@
+---
+- name: Read input values
+  set_fact:
+    name1: "{{log_name}}
+    Adate: "{{After_Date}}"
+    Bdate: "{{Before_Date}}"
+    type: "{{entry_type}}"
+

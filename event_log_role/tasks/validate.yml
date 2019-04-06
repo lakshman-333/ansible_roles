@@ -1,0 +1,25 @@
+---
+- name: validate log_names
+  fail:
+    msg: enter correct log_name(system/application)
+  when:
+    - name1 != "system"
+    - name1 != "application"
+- name: validate after_dates
+  fail:
+    msg: enter the date after(03/09/19)
+  when:
+    - Adate < "03/10/19"
+- name: validate Before_dates
+  fail:
+    msg: enter the date before today's date
+  when:
+    - Bdate > "{{lookup('pipe','date +%m/%d/%y')}}"
+- name: validate entry_type
+  fail:
+    msg: enter correct entry_type(information/error/Warning)
+  when:
+    - type != "information"
+    - type != "error"
+    - type != "Warning"
+
