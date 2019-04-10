@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: ignore errors
+      file:
+        path: /root/error/lti
+        state: directory
+      register: info
+      ignore_errors: true
+    - debug:
+        msg: "{{ info }}"
+    - debug:
+        msg: "task1 failed"
+      when: "'FAILED' in info.stderr"
+    - debug:
+       msg: "task1 failed"
+      failed_when: info.rc >= 1
+    - debug:
+       msg: "Task1 failed"
+      failed_when: info.failed == true
+    - debug:
+        var: info
+
